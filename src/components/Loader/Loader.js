@@ -2,5 +2,5 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
 
 export default function Loading() {
-  return <Loader type="Grid" color="#00BFFF" height={80} width={80} />;
+  return <Loader type="ThreeDots" color="#00BFFF" height={200} width={200} />;
 }

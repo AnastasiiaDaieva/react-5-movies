@@ -9,6 +9,8 @@ import { Routes, Route } from 'react-router';
 // import Reviews from 'components/Reviews/Reviews';
 // import Searchbar from 'components/Searchbar/Searchbar';
 import Loading from 'components/Loader/Loader';
+import Header from 'components/Header/Header';
+import Container from 'components/Container/Container';
 
 const HomeView = lazy(() =>
   import('views/HomeView' /* webpackChunkName: "home-view" */),
@@ -23,14 +25,17 @@ const MovieView = lazy(() =>
 
 function App() {
   return (
-    <Suspense fallback={<Loading />}>
-      <Routes>
-        <Route path="/" element={<HomeView />} />
-        <Route path="/search" element={<MovieSearchView />} />
+    <>
+      <Header />
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<HomeView />} />
+          <Route path="/search" element={<MovieSearchView />} />
 
-        <Route path="/movie/:id" element={<MovieView />} />
-      </Routes>
-    </Suspense>
+          <Route path="/movie/:id" element={<MovieView />} />
+        </Routes>
+      </Suspense>
+    </>
   );
 }
 

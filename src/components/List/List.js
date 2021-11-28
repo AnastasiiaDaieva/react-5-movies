@@ -1,3 +1,3 @@
-export default function List() {
-  return;
+export default function List({ className }) {
+  return <ul className={className}></ul>;
 }

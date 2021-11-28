@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router';
 import { Suspense, lazy } from 'react';
 import MovieCard from 'components/MovieCard/MovieCard';
 import Loading from 'components/Loader/Loader';
+import Button from 'components/Button/Button';
 
 const AddInfoSubView = lazy(() =>
   import('views/AddInfoSubView' /*webpackChunkName: "add-info-view" */),
@@ -21,6 +22,7 @@ const Reviews = lazy(() =>
 export default function MovieView() {
   return (
     <>
+      <Button type="button" text="Go back" />
       <MovieCard />
       <Suspense fallback={<Loading />}>
         <Routes>
