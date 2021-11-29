@@ -1,3 +1,3 @@
-export default function List({ className }) {
-  return <ul className={className}></ul>;
+export default function List({ className, children }) {
+  return <ul className={className}>{children}</ul>;
 }
