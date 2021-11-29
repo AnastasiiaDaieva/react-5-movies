@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/AddInfoSubView.js"],"names":["AddInfoSubView"],"mappings":"uHAGe,SAASA,KAHxB","file":"static/js/add-info-view.2f1acdd2.chunk.js","sourcesContent":["// cast\n// reviews\n\nexport default function AddInfoSubView() {\n  return;\n}\n"],"sourceRoot":""}

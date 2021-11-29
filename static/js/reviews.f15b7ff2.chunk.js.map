@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Reviews/Reviews.js"],"names":["Reviews"],"mappings":"uHAGe,SAASA,KAHxB","file":"static/js/reviews.f15b7ff2.chunk.js","sourcesContent":["// author\n// review\n\nexport default function Reviews() {\n  return;\n}\n"],"sourceRoot":""}

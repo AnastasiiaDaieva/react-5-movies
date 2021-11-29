@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-5-movies"]=this["webpackJsonpreact-5-movies"]||[]).push([[6],{90:function(t,e,n){"use strict";function s(){}n.r(e),n.d(e,"default",(function(){return s}))}}]);
+//# sourceMappingURL=reviews.f15b7ff2.chunk.js.map
