@@ -10,15 +10,9 @@ import { Routes, Route } from 'react-router';
 // import Searchbar from 'components/Searchbar/Searchbar';
 import Loading from 'components/Loader/Loader';
 import Header from 'components/Header/Header';
-import Container from 'components/Container/Container';
-
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
-
-const queryClient = new QueryClient();
 
 const HomeView = lazy(() =>
-  import('views/HomeView' /* webpackChunkName: "home-view" */),
+  import('views/HomeView.js' /* webpackChunkName: "home-view" */),
 );
 const MovieSearchView = lazy(() =>
   import('views/MovieSearchView' /* webpackChunkName: "search-view" */),
@@ -29,17 +23,17 @@ const MovieView = lazy(() =>
 );
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <Header />
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<HomeView />} />
           <Route path="/search" element={<MovieSearchView />} />
 
-          <Route path="/movie/:id" element={<MovieView />} />
+          <Route path="/movie/:id/*" element={<MovieView />} />
         </Routes>
       </Suspense>
-    </QueryClientProvider>
+    </>
   );
 }
 

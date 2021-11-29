@@ -5,13 +5,12 @@ import axios from 'axios';
 
 import Searchbar from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
-import { fetchMovies } from 'services/api';
+import { Link } from 'react-router-dom';
 import List from 'components/List/List';
 import Loading from 'components/Loader/Loader';
 import Button from 'components/Button/Button';
-
-const API_KEY = '6fc149a4cf08bb260c2094f65b6f8095';
-const BASE = 'https://api.themoviedb.org/3';
+import Container from 'components/Container/Container';
+import { API_KEY, BASE } from 'services/api';
 
 export default function MovieSearchView() {
   const [query, setQuery] = useState('');
@@ -55,21 +54,23 @@ export default function MovieSearchView() {
     setPageNumber(prevPage => prevPage + 1);
   };
   return (
-    <>
+    <Container>
       <Searchbar onSubmit={onQueryChange} />
       {loading && <Loading />}
       {foundMovies.length > 0 && (
         <>
           <h2>Results</h2>
-          <List className="found-movies__list">
-            {foundMovies?.map(({ id, title }) => {
+          <List>
+            {foundMovies.map(({ id, title }) => {
               return <li key={id}>{title}</li>;
             })}
           </List>
         </>
       )}
       {total > 20 && <Button text="Load More" onClick={loadMore} />}
-      {foundMovies.length === 0 && <div>Nothing was found on {query}</div>}
-    </>
+      {foundMovies.length === 0 && query && (
+        <div>Nothing was found on {query}</div>
+      )}
+    </Container>
   );
 }

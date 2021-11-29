@@ -1,7 +1,5 @@
-import axios from 'axios';
-
-const API_KEY = '6fc149a4cf08bb260c2094f65b6f8095';
-const BASE = 'https://api.themoviedb.org/3';
+export const API_KEY = '6fc149a4cf08bb260c2094f65b6f8095';
+export const BASE = 'https://api.themoviedb.org/3';
 
 export async function fetchMovies(value, page) {
   return await fetch(

@@ -1,0 +1,19 @@
+.Header {
+  padding: 10px;
+  font-weight: 600;
+}
+
+.Header__navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Header__item {
+  text-decoration: none;
+  color: #212121;
+}
+
+.Header__item:not(:last-child) {
+  margin-right: 55px;
+}

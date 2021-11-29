@@ -1,3 +1,5 @@
-export default function List({ className, children }) {
-  return <ul className={className}>{children}</ul>;
+import s from 'components/List/List.module.css';
+
+export default function List({ children }) {
+  return <ul className={s.List}>{children}</ul>;
 }

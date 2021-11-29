@@ -1,0 +1,33 @@
+@import '/src/index.css';
+
+.Home__item {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  align-items: center;
+  box-shadow: var(--shadow);
+  background-color: #e0dada;
+}
+
+.Home__item:not(:last-child) {
+  margin-bottom: 25px;
+}
+
+.Home__description {
+  display: flex;
+  flex-direction: column;
+}
+
+.Home__image {
+  margin-right: 50px;
+  width: 161px;
+  height: 220px;
+}
+
+.Home__overview {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border: 1px solid #666666;
+  background-color: #dddbdb;
+}
