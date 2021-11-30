@@ -11,6 +11,7 @@ import Loading from 'components/Loader/Loader';
 import Button from 'components/Button/Button';
 import Container from 'components/Container/Container';
 import { API_KEY, BASE } from 'services/api';
+import s from 'views/MovieSearchView.module.css';
 
 export default function MovieSearchView() {
   const [query, setQuery] = useState('');
@@ -43,6 +44,17 @@ export default function MovieSearchView() {
     // console.log(foundMovies);
   }, [query, pageNumber]);
 
+  useEffect(() => {
+    window.localStorage.setItem('found', JSON.stringify(foundMovies));
+    // const movies = window.localStorage.getItem('found');
+    // const parsedMovies = JSON.parse(movies);
+    // if (parsedMovies.length > 0) {
+    //   setFoundMovies(parsedMovies);
+    // } else {
+    //   return;
+    // }
+  }, [foundMovies]);
+
   const onQueryChange = query => {
     setQuery(query);
     setPageNumber(1);
@@ -57,13 +69,29 @@ export default function MovieSearchView() {
     <Container>
       <Searchbar onSubmit={onQueryChange} />
       {loading && <Loading />}
+
       {foundMovies.length > 0 && (
         <>
           <h2>Results</h2>
           <List>
-            {foundMovies.map(({ id, title }) => {
-              return <li key={id}>{title}</li>;
-            })}
+            {foundMovies.map(
+              ({ title, id, poster_path, release_date, overview }) => (
+                <li key={id} className={s.Search__item}>
+                  <img
+                    alt={title}
+                    src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                    className={s.Search__image}
+                  />
+                  <div className={s.Search__description}>
+                    <Link to={`/movies/${id}`} className={s.Search__title}>
+                      <h2>{title}</h2>
+                    </Link>
+                    <p> {new Date(release_date).toDateString()}</p>
+                    <p className={s.Search__overview}>{overview}</p>
+                  </div>
+                </li>
+              ),
+            )}
           </List>
         </>
       )}

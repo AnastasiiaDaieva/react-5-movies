@@ -4,13 +4,18 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { API_KEY } from 'services/api';
 import List from 'components/List/List';
-import { Link, useMatch } from 'react-router-dom';
+import { Link, NavLink, useMatch } from 'react-router-dom';
+import Loading from 'components/Loader/Loader';
 
 import s from 'views/HomeView.module.css';
 
 export default function HomeView() {
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
+    setLoading(true);
+
     axios
       .get(
         `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}
@@ -20,21 +25,17 @@ export default function HomeView() {
         const array = response.data.results;
         setTrendingMovies(array);
         console.log(response.data);
-      });
+      })
+      .catch(error => console.log(error.message))
+      .finally(() => setLoading(false));
   }, []);
   return (
     <Container>
-      <h1>Trending Today</h1>
-      <List>
+      {loading && <Loading />}
+
+      <List heading="Trending Today">
         {trendingMovies.map(
-          ({
-            title,
-            id,
-            poster_path,
-            release_date,
-            overview,
-            backdrop_path,
-          }) => (
+          ({ title, id, poster_path, release_date, overview }) => (
             <li key={id} className={s.Home__item}>
               <img
                 alt={title}
@@ -42,7 +43,7 @@ export default function HomeView() {
                 className={s.Home__image}
               />
               <div className={s.Home__description}>
-                <Link to={`/movie/${id}`}>
+                <Link to={`/movies/${id}`} className={s.Home__title}>
                   <h2>{title}</h2>
                 </Link>
                 <p> {new Date(release_date).toDateString()}</p>

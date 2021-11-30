@@ -1,6 +1,6 @@
 // go back button
 
-import { Routes, Route, useParams } from 'react-router';
+import { Routes, Route, useParams, useNavigate } from 'react-router';
 import { Suspense, lazy } from 'react';
 import MovieCard from 'components/MovieCard/MovieCard';
 import Loading from 'components/Loader/Loader';
@@ -22,9 +22,11 @@ const Reviews = lazy(() =>
 
 // sub additional information
 
-export default function MovieView() {
+export default function MovieDetailsView() {
   const [movie, setMovie] = useState({ budget: 0, runtime: 0 });
   const { id } = useParams();
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get(
@@ -40,7 +42,7 @@ export default function MovieView() {
   const { vote_average, title, poster_path, overview, genres = [] } = movie;
   return (
     <>
-      <Button type="button" text="Go back" />
+      <Button onClick={() => navigate(-1)} type="button" text="Go back" />
       <MovieCard
         score={vote_average}
         title={title}

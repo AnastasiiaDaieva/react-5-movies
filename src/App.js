@@ -18,8 +18,8 @@ const MovieSearchView = lazy(() =>
   import('views/MovieSearchView' /* webpackChunkName: "search-view" */),
 );
 
-const MovieView = lazy(() =>
-  import('views/MovieView' /*webpackChunkName: "movie-view" */),
+const MovieDetailsView = lazy(() =>
+  import('views/MovieDetailsView' /*webpackChunkName: "movie-view" */),
 );
 function App() {
   return (
@@ -27,10 +27,10 @@ function App() {
       <Header />
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/" element={<HomeView />} />
-          <Route path="/search" element={<MovieSearchView />} />
+          <Route path="/*" element={<HomeView />} />
+          <Route path="/movies" element={<MovieSearchView />} />
 
-          <Route path="/movie/:id/*" element={<MovieView />} />
+          <Route path="/movies/:id/" element={<MovieDetailsView />} />
         </Routes>
       </Suspense>
     </>

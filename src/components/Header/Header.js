@@ -17,7 +17,7 @@ export default function Header() {
           Home
         </NavLink>
         <NavLink
-          to="/search"
+          to="/movies"
           className={s.Header__item}
           style={({ isActive }) => {
             return {

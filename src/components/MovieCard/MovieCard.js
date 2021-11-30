@@ -8,7 +8,6 @@ import List from 'components/List/List';
 
 export default function MovieCard({ title, score, poster, overview, genres }) {
   console.log(genres);
-  const genreId = nanoid();
   return (
     <Container>
       <img alt={title} src={`https://image.tmdb.org/t/p/w300/${poster}`} />

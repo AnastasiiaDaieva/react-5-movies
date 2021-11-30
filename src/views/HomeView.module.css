@@ -5,7 +5,7 @@
   flex-direction: row;
   padding: 20px;
   align-items: center;
-  box-shadow: var(--shadow);
+  box-shadow: var(--movie-card-shadow);
   background-color: #e0dada;
 }
 
@@ -16,6 +16,15 @@
 .Home__description {
   display: flex;
   flex-direction: column;
+}
+
+.Home__title {
+  text-decoration: none;
+  color: #212121;
+}
+
+.Home__title:hover {
+  color: #1a2a83;
 }
 
 .Home__image {
