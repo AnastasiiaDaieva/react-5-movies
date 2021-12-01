@@ -1,1 +1,0 @@
-{"version":3,"sources":["components/Cast/Cast.js"],"names":["Cast"],"mappings":"uHAAA,kEAKe,SAASA,IACtB,OAAO,cAAC,IAAD","file":"static/js/cast.0a29e131.chunk.js","sourcesContent":["// actor\n// character\n\nimport List from 'components/List/List';\n\nexport default function Cast() {\n  return <List></List>;\n}\n"],"sourceRoot":""}
