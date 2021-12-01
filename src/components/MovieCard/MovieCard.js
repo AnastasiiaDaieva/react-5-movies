@@ -1,13 +1,20 @@
 // user score
 // overview
 // genres
-import { nanoid } from 'nanoid';
 
 import Container from 'components/Container/Container';
 import List from 'components/List/List';
 
-export default function MovieCard({ title, score, poster, overview, genres }) {
+export default function MovieCard({
+  title,
+  score,
+  poster,
+  overview,
+  genres,
+  id,
+}) {
   console.log(genres);
+
   return (
     <Container>
       <img alt={title} src={`https://image.tmdb.org/t/p/w300/${poster}`} />

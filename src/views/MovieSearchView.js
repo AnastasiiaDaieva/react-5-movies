@@ -46,13 +46,6 @@ export default function MovieSearchView() {
 
   useEffect(() => {
     window.localStorage.setItem('found', JSON.stringify(foundMovies));
-    // const movies = window.localStorage.getItem('found');
-    // const parsedMovies = JSON.parse(movies);
-    // if (parsedMovies.length > 0) {
-    //   setFoundMovies(parsedMovies);
-    // } else {
-    //   return;
-    // }
   }, [foundMovies]);
 
   const onQueryChange = query => {

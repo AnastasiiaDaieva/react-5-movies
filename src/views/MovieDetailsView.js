@@ -1,6 +1,6 @@
 // go back button
 
-import { Routes, Route, useParams, useNavigate } from 'react-router';
+import { Routes, Route, useParams, useNavigate, useMatch } from 'react-router';
 import { Suspense, lazy } from 'react';
 import MovieCard from 'components/MovieCard/MovieCard';
 import Loading from 'components/Loader/Loader';
@@ -9,8 +9,8 @@ import { API_KEY, BASE } from 'services/api';
 import Button from 'components/Button/Button';
 import { useState, useEffect } from 'react';
 
-const AddInfoSubView = lazy(() =>
-  import('views/AddInfoSubView' /*webpackChunkName: "add-info-view" */),
+const AddInfo = lazy(() =>
+  import('components/AddInfo/AddInfo' /*webpackChunkName: "add-info" */),
 );
 
 const Cast = lazy(() =>
@@ -27,6 +27,9 @@ export default function MovieDetailsView() {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const [reviews, setReviews] = useState([]);
+  const [cast, setCast] = useState([]);
+
   useEffect(() => {
     axios
       .get(
@@ -39,6 +42,26 @@ export default function MovieDetailsView() {
         console.log(movie);
       });
   }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        `${BASE}/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`,
+      )
+      .then(response => setReviews(response.data.results))
+      .catch(error => console.log(error.message));
+    console.log(reviews);
+  }, [id]);
+
+  useEffect(() => {
+    axios
+      .get(`${BASE}/movie/${id}/credits?api_key=${API_KEY}&language=en-US`)
+      .then(response => setCast(response.data.cast))
+      .catch(error => console.log(error.message));
+
+    console.log(cast);
+  }, [id]);
+
   const { vote_average, title, poster_path, overview, genres = [] } = movie;
   return (
     <>
@@ -49,15 +72,9 @@ export default function MovieDetailsView() {
         poster={poster_path}
         overview={overview}
         genres={genres}
+        id={id}
       />
-      <Suspense fallback={<Loading />}>
-        <Routes>
-          <Route path="addinfo" element={<AddInfoSubView />}>
-            {/* <Route path="/cast" element={<Cast />} />
-            <Route path="/reviews" element={<Reviews />} /> */}
-          </Route>
-        </Routes>
-      </Suspense>
+      <AddInfo id={id} title={title} />
     </>
   );
 }
