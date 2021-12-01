@@ -65,7 +65,7 @@ export default function MovieSearchView() {
 
       {foundMovies.length > 0 && (
         <>
-          <h2>Results</h2>
+          <h2>Results on {`"${query}"`}</h2>
           <List>
             {foundMovies.map(
               ({ title, id, poster_path, release_date, overview }) => (

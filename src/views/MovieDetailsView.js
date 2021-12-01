@@ -1,9 +1,8 @@
 // go back button
 
-import { Routes, Route, useParams, useNavigate, useMatch } from 'react-router';
-import { Suspense, lazy } from 'react';
+import { useParams, useNavigate } from 'react-router';
+import { lazy } from 'react';
 import MovieCard from 'components/MovieCard/MovieCard';
-import Loading from 'components/Loader/Loader';
 import axios from 'axios';
 import { API_KEY, BASE } from 'services/api';
 import Button from 'components/Button/Button';
@@ -13,12 +12,12 @@ const AddInfo = lazy(() =>
   import('components/AddInfo/AddInfo' /*webpackChunkName: "add-info" */),
 );
 
-const Cast = lazy(() =>
-  import('components/Cast/Cast' /*webpackChunkName: "cast" */),
-);
-const Reviews = lazy(() =>
-  import('components/Reviews/Reviews' /*webpackChunkName: "reviews" */),
-);
+// const Cast = lazy(() =>
+//   import('components/Cast/Cast' /*webpackChunkName: "cast" */),
+// );
+// const Reviews = lazy(() =>
+//   import('components/Reviews/Reviews' /*webpackChunkName: "reviews" */),
+// );
 
 // sub additional information
 
@@ -74,7 +73,7 @@ export default function MovieDetailsView() {
         genres={genres}
         id={id}
       />
-      <AddInfo id={id} title={title} />
+      <AddInfo id={id} title={title} reviews={reviews} cast={cast} />
     </>
   );
 }
