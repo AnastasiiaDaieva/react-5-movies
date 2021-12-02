@@ -30,7 +30,10 @@ export default function AddInfo({ id, reviews, cast }) {
         </NavLink>
         <Suspense fallback={<Loading />}>
           <Routes>
-            <Route path={`cast`} element={<Cast id={id} castArray={cast} />} />
+            <Route
+              path={`cast`}
+              element={<Cast id={id} castArray={cast} additional />}
+            />
             <Route
               path={`reviews`}
               element={<Reviews id={id} reviewsArray={reviews} />}
