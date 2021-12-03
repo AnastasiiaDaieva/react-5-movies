@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import Searchbar from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import List from 'components/List/List';
 import Loading from 'components/Loader/Loader';
 import Button from 'components/Button/Button';
@@ -20,6 +20,7 @@ export default function MovieSearchView() {
   const [total, setTotal] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(false);
+  let location = useLocation();
 
   useEffect(() => {
     if (query === '') {
@@ -45,7 +46,13 @@ export default function MovieSearchView() {
   }, [query, pageNumber]);
 
   useEffect(() => {
-    window.localStorage.setItem('found', JSON.stringify(foundMovies));
+    window.sessionStorage.setItem(
+      'searchDetails',
+      JSON.stringify({
+        searchQuery: query,
+        searchDetails: foundMovies,
+      }),
+    );
   }, [foundMovies]);
 
   const onQueryChange = query => {

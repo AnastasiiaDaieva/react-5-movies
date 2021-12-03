@@ -15,7 +15,11 @@ export default function MovieCard({
   id,
   date,
 }) {
+  const cutOut = string => {
+    return string.slice(0, 4);
+  };
   console.log(genres);
+  console.log(date);
 
   return (
     <article className={s.MovieCard}>
@@ -23,7 +27,8 @@ export default function MovieCard({
         <img alt={title} src={`https://image.tmdb.org/t/p/w300/${poster}`} />
       </div>
       <div className={s.Card__subcontainer}>
-        <h2>{`${title}, ${date.slice(0, 4)}`}</h2>
+        <h2>{title}</h2>
+        {/* <p>{cutOut(date)}</p> */}
         <List style={{ padding: '0px' }}>
           {genres.map(({ id, name }) => (
             <li key={id} className={s.Card__genres}>

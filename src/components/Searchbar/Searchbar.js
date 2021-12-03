@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSearchParams } from 'react-router-dom';
+import s from 'components/Searchbar/Searchbar.module.css';
 
 export default function Searchbar({ onSubmit }) {
   const [query, setQuery] = useState('');
@@ -31,9 +32,10 @@ export default function Searchbar({ onSubmit }) {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className={s.Searchbar} onSubmit={handleSubmit}>
         <label htmlFor="inputSearch"></label>
         <input
+          className={s.Searchbar__input}
           type="text"
           name="query"
           value={query}

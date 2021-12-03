@@ -1,0 +1,7 @@
+.Searchbar {
+  display: flex;
+  flex-direction: row;
+}
+.Searchbar__input {
+  margin-right: 15px;
+}

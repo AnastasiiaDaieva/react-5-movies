@@ -1,10 +1,8 @@
 // author
 // review
 import Container from 'components/Container/Container';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { BASE, API_KEY } from 'services/api';
 import List from 'components/List/List';
 import s from 'components/Reviews/Reviews.module.css';
 
