@@ -2,10 +2,12 @@ import Button from 'components/Button/Button';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 export default function Searchbar({ onSubmit }) {
   const [query, setQuery] = useState('');
+  let [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams.get('query'));
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,8 +22,8 @@ export default function Searchbar({ onSubmit }) {
       });
       return;
     }
+    setSearchParams({ query: query });
     onSubmit(query);
-    setQuery('');
   };
 
   const handleQueryChange = e => {

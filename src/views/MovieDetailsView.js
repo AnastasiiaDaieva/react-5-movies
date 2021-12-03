@@ -61,7 +61,14 @@ export default function MovieDetailsView() {
     console.log(cast);
   }, [id]);
 
-  const { vote_average, title, poster_path, overview, genres = [] } = movie;
+  const {
+    vote_average,
+    title,
+    poster_path,
+    overview,
+    release_date,
+    genres = [],
+  } = movie;
   return (
     <>
       <Button onClick={() => navigate(-1)} type="button" text="Go back" />
@@ -72,6 +79,7 @@ export default function MovieDetailsView() {
         overview={overview}
         genres={genres}
         id={id}
+        date={release_date}
       />
       <AddInfo id={id} title={title} reviews={reviews} cast={cast} />
     </>

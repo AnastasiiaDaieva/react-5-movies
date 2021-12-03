@@ -9,7 +9,7 @@ import s from 'components/Cast/Cast.module.css';
 import List from 'components/List/List';
 
 export default function Cast({ castArray }) {
-  console.log('castArray', castArray);
+  // console.log('castArray', castArray);
   return (
     <List additionalClass={s.Cast__list}>
       {castArray.length > 0 ? (

@@ -1,0 +1,23 @@
+@import '/src/index.css';
+
+.Reviews__list {
+  list-style: none;
+}
+.Reviews__item {
+  padding: 40px 70px;
+  background-color: var(--neutral-color);
+  color: var(--alternative-color);
+}
+
+.Reviews__item:not(:last-child) {
+  margin-bottom: 70px;
+}
+.Reviews__passage {
+  margin-bottom: 15px;
+}
+
+.Reviews__author {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}

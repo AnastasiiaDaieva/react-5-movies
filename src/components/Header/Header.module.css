@@ -1,8 +1,10 @@
+@import '/src/index.css';
+
 .Header {
   padding: 40px 10px;
   font-weight: 600;
   border-bottom: 1px solid rgba(102, 102, 102, 0.3);
-  background-color: rgba(214, 180, 148, 0.11);
+  background-color: var(--neutral-color);
 }
 
 .Header__navigation {
@@ -13,7 +15,7 @@
 
 .Header__item {
   text-decoration: none;
-  color: #212121;
+  color: var(--alternative-color);
 }
 
 .Header__item:not(:last-child) {

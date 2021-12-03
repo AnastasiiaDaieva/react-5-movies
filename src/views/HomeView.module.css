@@ -1,12 +1,13 @@
 @import '/src/index.css';
 
 .Home__item {
+  color: var(--alternative-color);
   display: flex;
   flex-direction: row;
   padding: 20px;
   align-items: center;
   box-shadow: var(--movie-card-shadow);
-  background-color: #e0dada;
+  background-color: var(--neutral-color);
 }
 
 .Home__item:not(:last-child) {
@@ -20,7 +21,7 @@
 
 .Home__title {
   text-decoration: none;
-  color: #212121;
+  color: var(--alternative-color);
 }
 
 .Home__title:hover {
@@ -38,5 +39,5 @@
   border-radius: 10px;
   box-shadow: var(--shadow);
   border: 1px solid #666666;
-  background-color: #dddbdb;
+  background-color: var(--neutral-color);
 }

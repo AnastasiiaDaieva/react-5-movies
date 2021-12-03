@@ -1,5 +1,7 @@
 import s from 'components/Container/Container.module.css';
 
-export default function Container({ children }) {
-  return <div className={s.Container}>{children}</div>;
+export default function Container({ children, additionalClass }) {
+  return (
+    <div className={`${additionalClass}, ${s.Container} `}>{children}</div>
+  );
 }

@@ -3,7 +3,7 @@ import s from 'components/Header/Header.module.css';
 
 export const activeStyle = ({ isActive }) => {
   return {
-    color: isActive ? '#1340d4' : '',
+    color: isActive ? '#2b6777' : '',
   };
 };
 export function Header() {
