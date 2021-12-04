@@ -58,7 +58,6 @@ export default function MovieDetailsView() {
   }, [id]);
 
   // const onGoBack =
-
   const {
     vote_average,
     title,
