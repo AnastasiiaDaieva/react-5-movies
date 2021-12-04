@@ -8,7 +8,7 @@ import s from 'components/Searchbar/Searchbar.module.css';
 export default function Searchbar({ onSubmit }) {
   const [query, setQuery] = useState('');
   let [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.get('query'));
+  // console.log(searchParams.get('query'));
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -41,6 +41,7 @@ export default function Searchbar({ onSubmit }) {
           value={query}
           onChange={handleQueryChange}
           id="inputSearch"
+          placeholder="Please type a movie title"
         />
         <Button text="Search" type="submit" />
       </form>

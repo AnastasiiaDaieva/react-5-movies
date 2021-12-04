@@ -15,16 +15,17 @@ export default function MovieCard({
   id,
   date,
 }) {
-  const cutOut = async string => {
-    console.log(await string.slice(0, 4));
-  };
-  console.log(genres);
-  console.log(date);
+  // console.log(genres);
+  // console.log(date);
 
   return (
     <article className={s.MovieCard}>
       <div className={s.Card__poster}>
-        <img alt={title} src={`https://image.tmdb.org/t/p/w300/${poster}`} />
+        <img
+          className={s.Card__image}
+          alt={title}
+          src={`https://image.tmdb.org/t/p/w300/${poster}`}
+        />
       </div>
       <div className={s.Card__subcontainer}>
         <h2>{`${title} (${date})`}</h2>

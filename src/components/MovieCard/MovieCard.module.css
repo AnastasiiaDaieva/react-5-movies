@@ -15,7 +15,11 @@
 }
 
 .Card__poster {
-  width: 400px;
+  min-width: 400px;
+  margin: 0;
+}
+.Card__image {
+  box-shadow: var(--movie-card-shadow);
 }
 .MovieCard {
   display: flex;
@@ -23,12 +27,15 @@
   justify-content: center;
   flex-wrap: nowrap;
   padding: 50px 40px;
+
   color: var(--alternative-color);
 }
 
 .Card__subcontainer {
+  max-width: 600px;
   padding: 40px;
   background-color: var(--neutral-color);
   display: flex;
   flex-direction: column;
+  box-shadow: var(--movie-card-shadow);
 }

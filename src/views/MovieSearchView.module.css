@@ -1,8 +1,10 @@
+@import '/src/index.css';
 .Search__item {
   composes: Home__item from 'views/HomeView.module.css';
 }
 .Search__image {
   composes: Home__image from 'views/HomeView.module.css';
+  box-shadow: var(--movie-card-shadow);
 }
 .Search__description {
   composes: Home__description from 'views/HomeView.module.css';

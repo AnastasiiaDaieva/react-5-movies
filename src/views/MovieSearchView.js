@@ -12,6 +12,7 @@ import Button from 'components/Button/Button';
 import Container from 'components/Container/Container';
 import { API_KEY, BASE } from 'services/api';
 import s from 'views/MovieSearchView.module.css';
+import { format } from 'prettier';
 
 export default function MovieSearchView() {
   const [query, setQuery] = useState('');
@@ -20,7 +21,7 @@ export default function MovieSearchView() {
   const [total, setTotal] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(false);
-  let location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     if (query === '') {
@@ -44,16 +45,6 @@ export default function MovieSearchView() {
       .finally(() => setLoading(false));
     // console.log(foundMovies);
   }, [query, pageNumber]);
-
-  useEffect(() => {
-    window.sessionStorage.setItem(
-      'searchDetails',
-      JSON.stringify({
-        searchQuery: query,
-        searchDetails: foundMovies,
-      }),
-    );
-  }, [foundMovies]);
 
   const onQueryChange = query => {
     setQuery(query);
@@ -83,7 +74,11 @@ export default function MovieSearchView() {
                     className={s.Search__image}
                   />
                   <div className={s.Search__description}>
-                    <Link to={`/movies/${id}`} className={s.Search__title}>
+                    <Link
+                      to={`/movies/${id}`}
+                      state={{ from: location }}
+                      className={s.Search__title}
+                    >
                       <h2>{title}</h2>
                     </Link>
                     <p> {new Date(release_date).toDateString()}</p>

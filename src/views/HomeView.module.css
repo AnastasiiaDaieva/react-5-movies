@@ -22,10 +22,11 @@
 .Home__title {
   text-decoration: none;
   color: var(--alternative-color);
+  transition: var(--timing-function);
 }
 
 .Home__title:hover {
-  color: #1a2a83;
+  color: var(--main-color);
 }
 
 .Home__image {
@@ -40,4 +41,9 @@
   box-shadow: var(--shadow);
   border: 1px solid #666666;
   background-color: var(--neutral-color);
+}
+
+.Home__heading {
+  text-align: center;
+  font-size: 30px;
 }

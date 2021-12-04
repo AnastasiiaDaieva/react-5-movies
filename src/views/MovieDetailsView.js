@@ -2,7 +2,7 @@
 
 import { useParams, useNavigate, useLocation } from 'react-router';
 import { lazy } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import MovieCard from 'components/MovieCard/MovieCard';
 import axios from 'axios';
 import { API_KEY, BASE } from 'services/api';
@@ -18,9 +18,12 @@ const AddInfo = lazy(() =>
 export default function MovieDetailsView() {
   const [movie, setMovie] = useState({ budget: 0, runtime: 0 });
   const { id } = useParams();
-  let location = useLocation();
+  const location = useLocation();
+  console.log('mdv', location);
+  const pathname = location.state?.from?.pathname;
+  const search = location.state?.from?.search;
+  console.log('search', search);
   const navigate = useNavigate();
-  console.log(useNavigate);
 
   const [reviews, setReviews] = useState([]);
   const [cast, setCast] = useState([]);
@@ -56,8 +59,9 @@ export default function MovieDetailsView() {
 
     console.log(cast);
   }, [id]);
-
-  // const onGoBack =
+  const onGoBack = () => {
+    navigate(`${pathname}${search}`);
+  };
   const {
     vote_average,
     title,
@@ -68,19 +72,8 @@ export default function MovieDetailsView() {
   } = movie;
   return (
     <Container>
-      <Button
-        icon={<Icon />}
-        onClick={() => navigate(-1)}
-        type="button"
-        text="Go back"
-      >
-        <Link
-          to={
-            location?.state?.from?.pathname
-              ? location?.state?.from?.pathname.location.state?.from?.search
-              : '/'
-          }
-        ></Link>
+      <Button icon={<Icon />} onClick={onGoBack} type="button" text="Go back">
+        {/* <Link to={pathname ? `${pathname}${search}` : '/movies'}>go back</Link> */}
       </Button>
       <MovieCard
         score={vote_average}

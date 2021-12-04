@@ -18,7 +18,7 @@ const Reviews = lazy(() =>
 export default function AddInfo({ id, reviews, cast }) {
   const { pathname, state } = useLocation();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   return (
     <>
