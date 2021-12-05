@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useState } from 'react';
 import { Routes, Route } from 'react-router';
 
 import Loading from 'components/Loader/Loader';
@@ -18,13 +18,27 @@ const MovieDetailsView = lazy(() =>
 );
 
 function App() {
+  const [foundMovies, setFoundMovies] = useState([]);
+
+  const onSetMovies = array => {
+    setFoundMovies(prevList => [...prevList, ...array]);
+  };
+
   return (
     <>
       <Header />
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/*" element={<HomeView />} />
-          <Route path="/movies" element={<MovieSearchView />} />
+          <Route
+            path="/movies"
+            element={
+              <MovieSearchView
+                onSetMovies={onSetMovies}
+                foundMovies={foundMovies}
+              />
+            }
+          />
 
           <Route path="/movies/:id/*" element={<MovieDetailsView />} />
         </Routes>

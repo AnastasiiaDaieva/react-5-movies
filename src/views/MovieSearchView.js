@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_KEY, BASE } from 'services/api';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import Searchbar from 'components/Searchbar/Searchbar';
@@ -12,9 +12,9 @@ import Container from 'components/Container/Container';
 
 import s from 'views/MovieSearchView.module.css';
 
-export default function MovieSearchView() {
+export default function MovieSearchView({ onSetMovies, foundMovies }) {
   const [query, setQuery] = useState('');
-  const [foundMovies, setFoundMovies] = useState([]);
+
   const [error, setError] = useState(null);
   const [total, setTotal] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
@@ -35,7 +35,7 @@ export default function MovieSearchView() {
       .then(response => {
         const array = response.data.results;
         const total = response.data.total_results;
-        setFoundMovies(prevList => [...prevList, ...array]);
+        onSetMovies(array);
         setTotal(total);
         // console.log(response);
       })
@@ -47,13 +47,14 @@ export default function MovieSearchView() {
   const onQueryChange = query => {
     setQuery(query);
     setPageNumber(1);
-    setFoundMovies([]);
+    onSetMovies([]);
     setError(null);
   };
 
   const loadMore = () => {
     setPageNumber(prevPage => prevPage + 1);
   };
+
   return (
     <Container>
       <Searchbar onSubmit={onQueryChange} />
