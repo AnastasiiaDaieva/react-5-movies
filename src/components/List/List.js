@@ -1,5 +1,7 @@
 import s from 'components/List/List.module.css';
 
+import PropTypes from 'prop-types';
+
 export default function List({
   children,
   heading,
@@ -13,3 +15,10 @@ export default function List({
     </>
   );
 }
+
+List.propTypes = {
+  children: PropTypes.any,
+  heading: PropTypes.string,
+  additionalClass: PropTypes.string,
+  classProp: PropTypes.string,
+};

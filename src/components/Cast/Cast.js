@@ -1,21 +1,14 @@
-// actor
-// character
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { BASE, API_KEY } from 'services/api';
 import defaultProfile from 'images/default-profile.jpg';
-import s from 'components/Cast/Cast.module.css';
-import Loading from 'components/Loader/Loader';
 
 import List from 'components/List/List';
 
-export default function Cast({ castArray }) {
-  const [loading, setLoading] = useState(false);
+import s from 'components/Cast/Cast.module.css';
 
-  // console.log('castArray', castArray);
+import PropTypes from 'prop-types';
+
+export default function Cast({ castArray }) {
   return (
     <>
-      {loading && <Loading />}
       <List additionalClass={s.Cast__list}>
         {castArray.length > 0 ? (
           castArray.map(({ name, profile_path, id, character }) => (
@@ -49,6 +42,6 @@ export default function Cast({ castArray }) {
   );
 }
 
-Cast.defaultProps = {
-  poster_path: defaultProfile,
+Cast.propTypes = {
+  castArray: PropTypes.array,
 };

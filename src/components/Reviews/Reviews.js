@@ -1,16 +1,14 @@
-// author
-// review
-import Container from 'components/Container/Container';
-import { useState } from 'react';
 import { nanoid } from 'nanoid';
+
+import Container from 'components/Container/Container';
 import List from 'components/List/List';
+
 import s from 'components/Reviews/Reviews.module.css';
-import Loading from 'components/Loader/Loader';
+
+import PropTypes from 'prop-types';
 
 export default function Reviews({ reviewsArray }) {
-  const [showLess, setShowLess] = useState(true);
   // console.log('reviewsArray', reviewsArray);
-  const [loading, setLoading] = useState(false);
 
   const splitContent = text => {
     let split = text.split(/(?:\r?\n)+/);
@@ -27,8 +25,6 @@ export default function Reviews({ reviewsArray }) {
 
   return (
     <Container>
-      {loading && <Loading />}
-
       {reviewsArray.length > 0 ? (
         <List additionalClass={s.Reviews__list}>
           {reviewsArray.map(({ author, author_details, content, id }) => (
@@ -37,11 +33,7 @@ export default function Reviews({ reviewsArray }) {
                 <p className={s.Reviews__constant}>user</p>
                 <span>{author}</span> <span>{author_details.rating}</span>
               </div>
-              <div className={s.Reviews__text}>
-                {splitContent(content).length > 200
-                  ? splitContent(content)
-                  : splitContent(content).slice(0, 100)}
-              </div>
+              <div className={s.Reviews__text}>{splitContent(content)}</div>
             </li>
           ))}
         </List>
@@ -51,3 +43,7 @@ export default function Reviews({ reviewsArray }) {
     </Container>
   );
 }
+
+Reviews.propTypes = {
+  reviewsArray: PropTypes.array,
+};

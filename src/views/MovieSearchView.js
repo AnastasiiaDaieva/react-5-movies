@@ -1,18 +1,16 @@
-// searchbar
-// button
-
 import axios from 'axios';
+import { API_KEY, BASE } from 'services/api';
 
-import Searchbar from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
+import Searchbar from 'components/Searchbar/Searchbar';
 import List from 'components/List/List';
 import Loading from 'components/Loader/Loader';
 import Button from 'components/Button/Button';
 import Container from 'components/Container/Container';
-import { API_KEY, BASE } from 'services/api';
+
 import s from 'views/MovieSearchView.module.css';
-import { format } from 'prettier';
 
 export default function MovieSearchView() {
   const [query, setQuery] = useState('');

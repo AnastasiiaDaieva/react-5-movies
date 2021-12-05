@@ -1,12 +1,11 @@
 import './App.css';
+
 import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router';
-// import HomeView from 'views/HomeView';
-// import MovieSearchView from 'views/MovieSearchView';
-// import MovieView from 'views/MovieView';
 
 import Loading from 'components/Loader/Loader';
 import { Header } from 'components/Header/Header';
+
 const HomeView = lazy(() =>
   import('views/HomeView.js' /* webpackChunkName: "home-view" */),
 );
@@ -17,6 +16,7 @@ const MovieSearchView = lazy(() =>
 const MovieDetailsView = lazy(() =>
   import('views/MovieDetailsView' /*webpackChunkName: "movie-view" */),
 );
+
 function App() {
   return (
     <>

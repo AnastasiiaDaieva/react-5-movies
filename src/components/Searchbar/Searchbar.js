@@ -1,9 +1,14 @@
-import Button from 'components/Button/Button';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSearchParams } from 'react-router-dom';
+
+import Button from 'components/Button/Button';
+
 import s from 'components/Searchbar/Searchbar.module.css';
+
+import PropTypes from 'prop-types';
 
 export default function Searchbar({ onSubmit }) {
   const [query, setQuery] = useState('');
@@ -48,3 +53,7 @@ export default function Searchbar({ onSubmit }) {
     </>
   );
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func,
+};

@@ -1,12 +1,13 @@
-// cast
-// reviews
-
 import { Suspense, lazy } from 'react';
 import { Route, Routes, useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
+
 import Container from 'components/Container/Container';
 import Loading from 'components/Loader/Loader';
+
 import s from 'components/AddInfo/AddInfo.module.css';
+
+import PropTypes from 'prop-types';
 
 const Cast = lazy(() =>
   import('components/Cast/Cast' /* webpackChunkName: "cast" */),
@@ -16,9 +17,7 @@ const Reviews = lazy(() =>
 );
 
 export default function AddInfo({ id, reviews, cast }) {
-  const { pathname, state } = useLocation();
-  const location = useLocation();
-  // console.log(location);
+  const { state } = useLocation();
 
   return (
     <>
@@ -55,3 +54,9 @@ export default function AddInfo({ id, reviews, cast }) {
     </>
   );
 }
+
+AddInfo.propTypes = {
+  id: PropTypes.string,
+  reviews: PropTypes.array,
+  cast: PropTypes.array,
+};

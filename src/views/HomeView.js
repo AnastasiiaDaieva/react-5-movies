@@ -1,10 +1,11 @@
-// trending today
-import Container from 'components/Container/Container';
 import axios from 'axios';
+import { API_KEY, BASE } from 'services/api';
+
 import { useEffect, useState } from 'react';
-import { API_KEY } from 'services/api';
+import { Link } from 'react-router-dom';
+
+import Container from 'components/Container/Container';
 import List from 'components/List/List';
-import { Link, NavLink, useMatch } from 'react-router-dom';
 import Loading from 'components/Loader/Loader';
 
 import s from 'views/HomeView.module.css';
@@ -18,7 +19,7 @@ export default function HomeView() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}
+        `${BASE}/trending/movie/day?api_key=${API_KEY}
 `,
       )
       .then(response => {

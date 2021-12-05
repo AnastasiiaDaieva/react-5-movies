@@ -1,10 +1,6 @@
-// user score
-// overview
-// genres
-
-import Container from 'components/Container/Container';
-import List from 'components/List/List';
 import s from 'components/MovieCard/MovieCard.module.css';
+
+import PropTypes from 'prop-types';
 
 export default function MovieCard({
   title,
@@ -12,7 +8,6 @@ export default function MovieCard({
   poster,
   overview,
   genres,
-  id,
   date,
 }) {
   // console.log(genres);
@@ -39,3 +34,12 @@ export default function MovieCard({
     </article>
   );
 }
+
+MovieCard.propTypes = {
+  title: PropTypes.string,
+  score: PropTypes.number,
+  poster: PropTypes.string,
+  overview: PropTypes.string,
+  genres: PropTypes.array,
+  date: PropTypes.string,
+};
