@@ -19,9 +19,28 @@ const MovieDetailsView = lazy(() =>
 
 function App() {
   const [foundMovies, setFoundMovies] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [query, setQuery] = useState('');
 
   const onSetMovies = array => {
-    setFoundMovies(prevList => [...prevList, ...array]);
+    if (array.length === 0) {
+      setFoundMovies([]);
+    } else {
+      setFoundMovies(prevList => [...prevList, ...array]);
+    }
+  };
+
+  const onSetQuery = query => {
+    setQuery(query);
+  };
+
+  const onSetPage = number => {
+    setPageNumber(number);
+  };
+
+  const onSetTotal = total => {
+    setTotal(total);
   };
 
   return (
@@ -35,7 +54,13 @@ function App() {
             element={
               <MovieSearchView
                 onSetMovies={onSetMovies}
+                onSetQuery={onSetQuery}
+                onSetPage={onSetPage}
+                onSetTotal={onSetTotal}
+                total={total}
                 foundMovies={foundMovies}
+                query={query}
+                pageNumber={pageNumber}
               />
             }
           />

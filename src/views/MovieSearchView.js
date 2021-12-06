@@ -12,12 +12,21 @@ import Container from 'components/Container/Container';
 
 import s from 'views/MovieSearchView.module.css';
 
-export default function MovieSearchView({ onSetMovies, foundMovies }) {
-  const [query, setQuery] = useState('');
+export default function MovieSearchView({
+  onSetMovies,
+  onSetQuery,
+  onSetTotal,
+  onSetPage,
+  foundMovies,
+  query,
+  pageNumber,
+  total,
+}) {
+  // const [query, setQuery] = useState('');
 
   const [error, setError] = useState(null);
-  const [total, setTotal] = useState(0);
-  const [pageNumber, setPageNumber] = useState(1);
+  // const [total, setTotal] = useState(0);
+  // const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
 
@@ -27,7 +36,7 @@ export default function MovieSearchView({ onSetMovies, foundMovies }) {
     }
     setLoading(true);
 
-    setQuery(query);
+    onSetQuery(query);
     axios
       .get(
         `${BASE}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${pageNumber}&include_adult=false`,
@@ -36,23 +45,23 @@ export default function MovieSearchView({ onSetMovies, foundMovies }) {
         const array = response.data.results;
         const total = response.data.total_results;
         onSetMovies(array);
-        setTotal(total);
+        onSetTotal(total);
         // console.log(response);
       })
       .catch(error => setError(error.message))
       .finally(() => setLoading(false));
     // console.log(foundMovies);
-  }, [query, pageNumber]);
+  }, [pageNumber, query]);
 
   const onQueryChange = query => {
-    setQuery(query);
-    setPageNumber(1);
+    onSetQuery(query);
+    onSetPage(1);
     onSetMovies([]);
     setError(null);
   };
 
   const loadMore = () => {
-    setPageNumber(prevPage => prevPage + 1);
+    onSetPage(prevPage => prevPage + 1);
   };
 
   return (
