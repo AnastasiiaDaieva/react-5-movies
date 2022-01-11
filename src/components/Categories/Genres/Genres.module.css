@@ -1,0 +1,29 @@
+@import '/src/index.css';
+.Genres__list {
+  padding: 0;
+  padding-left: 5px;
+}
+.Genres__item {
+  list-style: none;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.Genres__item::before {
+  content: '';
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  margin-right: 5px;
+  background-image: url(/src/images/movieicon.svg);
+  background-size: contain;
+}
+
+.Genres__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.Genres__link {
+  text-decoration: none;
+  color: var(--alternative-color);
+}

@@ -22,11 +22,7 @@ export default function MovieSearchView({
   pageNumber,
   total,
 }) {
-  // const [query, setQuery] = useState('');
-
   const [error, setError] = useState(null);
-  // const [total, setTotal] = useState(0);
-  // const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
 
@@ -87,9 +83,10 @@ export default function MovieSearchView({
                       state={{ from: location }}
                       className={s.Search__title}
                     >
-                      <h2>{title}</h2>
+                      <h2>
+                        {title} ({release_date.slice(0, 4)})
+                      </h2>
                     </Link>
-                    <p> {new Date(release_date).toDateString()}</p>
                     <p className={s.Search__overview}>{overview}</p>
                   </div>
                 </li>

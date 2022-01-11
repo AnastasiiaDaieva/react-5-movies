@@ -6,6 +6,8 @@ import Container from 'components/Container/Container';
 import Icon from 'images/arrow-back.svg';
 
 export default function MovieDetailsView() {
+  const getData = useParams();
+  console.log(getData);
   const { id } = useParams();
   const location = useLocation();
   console.log('MovieDetailsView', location);

@@ -1,0 +1,10 @@
+@import '/src/index.css';
+
+.Categories {
+  width: 25vw;
+  background-color: var(--neutral-color);
+  padding: 5px 10px;
+  margin-right: 40px;
+
+  box-shadow: var(--movie-card-shadow);
+}

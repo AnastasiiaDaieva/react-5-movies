@@ -19,3 +19,12 @@
 .Cast__description {
   padding: 5px;
 }
+
+.Cast__thumb {
+  font-weight: 600;
+  padding: 5px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

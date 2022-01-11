@@ -12,7 +12,7 @@ export default function Cast({ castArray }) {
       <List additionalClass={s.Cast__list}>
         {castArray.length > 0 ? (
           castArray.map(({ name, profile_path, id, character }) => (
-            <div key={id}>
+            <article key={id} className={s.Cast__thumb}>
               <li className={s.Cast__item}>
                 {profile_path ? (
                   <img
@@ -32,7 +32,7 @@ export default function Cast({ castArray }) {
                   <p>{character}</p>
                 </div>
               </li>
-            </div>
+            </article>
           ))
         ) : (
           <h2>No details on the cast</h2>

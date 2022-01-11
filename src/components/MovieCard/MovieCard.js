@@ -12,7 +12,11 @@ const AddInfo = lazy(() =>
 
 export default function MovieCard({ id }) {
   const [loading, setLoading] = useState(false);
-  const [movie, setMovie] = useState({ budget: 0, runtime: 0 });
+  const [movie, setMovie] = useState({
+    budget: 0,
+    runtime: 0,
+    release_date: '',
+  });
 
   const {
     vote_average,
@@ -54,7 +58,7 @@ export default function MovieCard({ id }) {
               />
             </div>
             <div className={s.Card__subcontainer}>
-              <h2>{`${title} (${release_date})`}</h2>
+              <h2>{`${title} (${release_date.slice(0, 4)})`}</h2>
 
               <p className={s.Card__genres}>
                 {genres.map(({ name }) => name).join(', ')}
