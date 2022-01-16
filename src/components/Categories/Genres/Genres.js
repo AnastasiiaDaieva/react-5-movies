@@ -2,14 +2,15 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { BASE, API_KEY } from 'services/api';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import s from './Genres.module.css';
-import { activeStyle } from 'components/Header/Header';
+import s from './Genres.module.scss';
+import GenreItem from './GenreItem/GenreItem';
+import Loading from 'components/Loader/Loader';
 
 function Genres() {
-  const [loading, setLoading] = useState(false);
   const [genres, setGenres] = useState([]);
   const [seeMore, setSeeMore] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   // console.log(genres);
 
   useEffect(() => {
@@ -21,36 +22,35 @@ function Genres() {
         setSeeMore(true);
         console.log(genres);
       })
+      .catch(error => console.log(error.message))
       .finally(() => setLoading(false));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
-      <h3>Genres</h3>
-      <ul className={s.Genres__list}>
-        {seeMore
-          ? genres.slice(0, 4).map(({ name, id }) => (
-              <li key={id} id={id} className={s.Genres__item}>
-                <NavLink
-                  to={`/genre/${id}`}
-                  className={s.Genres__link}
-                  style={activeStyle}
-                >
-                  {name}
-                </NavLink>
-              </li>
-            ))
-          : genres.map(({ name, id }) => (
-              <li key={id} id={id} className={s.Genres__item}>
-                <NavLink to={`/genre/${id}`} className={s.Genres__link}>
-                  {name}
-                </NavLink>
-              </li>
-            ))}
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <h3>Genres</h3>
+          <ul className={s.Genres__list}>
+            {seeMore
+              ? genres
+                  .slice(0, 4)
+                  .map(({ name, id }) => (
+                    <GenreItem key={id} id={id} name={name} />
+                  ))
+              : genres.map(({ name, id }) => (
+                  <GenreItem key={id} id={id} name={name} />
+                ))}
 
-        <p onClick={() => setSeeMore(!seeMore)}>
-          {seeMore ? 'See more >>' : 'See less <<'}
-        </p>
-      </ul>
+            <p onClick={() => setSeeMore(!seeMore)}>
+              {seeMore ? 'See more >>' : 'See less <<'}
+            </p>
+          </ul>
+        </>
+      )}
     </>
   );
 }

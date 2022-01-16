@@ -1,0 +1,22 @@
+@import '/src/index.scss';
+
+.MovieArticle__thumb {
+  width: calc(100% / 3 - 10px);
+  text-align: center;
+  box-shadow: var(--movie-card-shadow);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.MovieArticle__name {
+  padding: 0 5px;
+}
+
+.MovieArticle__title {
+  composes: Home__title from 'views/HomeView.module.scss';
+}

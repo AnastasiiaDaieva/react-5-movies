@@ -8,7 +8,7 @@ import { BASE, API_KEY } from 'services/api';
 import Container from 'components/Container/Container';
 import Loading from 'components/Loader/Loader';
 
-import s from 'components/AddInfo/AddInfo.module.css';
+import s from 'components/AddInfo/AddInfo.module.scss';
 
 import PropTypes from 'prop-types';
 

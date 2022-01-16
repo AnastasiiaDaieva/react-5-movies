@@ -1,4 +1,4 @@
-import s from 'components/List/List.module.css';
+import s from 'components/List/List.module.scss';
 
 import PropTypes from 'prop-types';
 

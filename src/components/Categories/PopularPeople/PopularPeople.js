@@ -2,24 +2,21 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { BASE, API_KEY } from 'services/api';
 import { useState } from 'react';
-import s from 'components/Categories/PopularPeople/PopularPeople.module.css';
+import s from 'components/Categories/PopularPeople/PopularPeople.module.scss';
 
 function PopularPeople() {
-  const [loading, setLoading] = useState(false);
-
   const [popularPeople, setPopularPeople] = useState([]);
 
   // console.log(popularPeople);
 
   useEffect(() => {
-    setLoading(true);
     axios
       .get(`${BASE}/person/popular?api_key=${API_KEY}&language=en-US&page=1`)
       .then(response => {
         setPopularPeople(response.data.results);
         // console.log(response.data.results);
       })
-      .finally(() => setLoading(false));
+      .catch(error => console.log(error.message));
   }, []);
   return (
     <div className={s.PopularPeople}>

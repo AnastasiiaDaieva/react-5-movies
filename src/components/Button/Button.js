@@ -1,4 +1,4 @@
-import s from 'components/Button/Button.module.css';
+import s from 'components/Button/Button.module.scss';
 
 import PropTypes from 'prop-types';
 

@@ -1,4 +1,4 @@
-import s from 'components/MovieCard/MovieCard.module.css';
+import s from 'components/MovieCard/MovieCard.module.scss';
 import axios from 'axios';
 import { useState, useEffect, lazy } from 'react';
 import { BASE, API_KEY } from 'services/api';
@@ -41,6 +41,7 @@ export default function MovieCard({ id }) {
         // console.log(response.data);
         // console.log(movie);
       })
+      .catch(error => console.log(error.message))
       .finally(() => setLoading(false));
   }, [id]);
   return (

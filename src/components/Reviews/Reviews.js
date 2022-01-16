@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import Container from 'components/Container/Container';
 import List from 'components/List/List';
 
-import s from 'components/Reviews/Reviews.module.css';
+import s from 'components/Reviews/Reviews.module.scss';
 
 import PropTypes from 'prop-types';
 

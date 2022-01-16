@@ -2,11 +2,12 @@ import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { ReactComponent as Logo } from 'images/logo.svg';
 
-import s from 'components/Header/Header.module.css';
+import s from 'components/Header/Header.module.scss';
 
 export const activeStyle = ({ isActive }) => {
   return {
-    color: isActive ? '#2b6777' : '',
+    color: isActive ? '#12545C' : '',
+    textShadow: isActive ? '#306970 1px 0 1px' : '',
   };
 };
 export function Header() {

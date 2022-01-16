@@ -1,4 +1,4 @@
-import s from 'components/Container/Container.module.css';
+import s from 'components/Container/Container.module.scss';
 
 import PropTypes from 'prop-types';
 

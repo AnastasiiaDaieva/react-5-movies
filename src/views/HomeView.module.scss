@@ -1,4 +1,4 @@
-@import '/src/index.css';
+@import '/src/index.scss';
 
 .Home__item {
   color: var(--alternative-color);
@@ -8,6 +8,7 @@
   align-items: center;
   box-shadow: var(--movie-card-shadow);
   background-color: var(--neutral-color);
+  width: 50vw;
 }
 
 .Home__item:not(:last-child) {

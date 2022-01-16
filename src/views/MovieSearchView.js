@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_KEY, BASE } from 'services/api';
 
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import Searchbar from 'components/Searchbar/Searchbar';
@@ -10,7 +10,7 @@ import Loading from 'components/Loader/Loader';
 import Button from 'components/Button/Button';
 import Container from 'components/Container/Container';
 
-import s from 'views/MovieSearchView.module.css';
+import s from 'views/MovieSearchView.module.scss';
 
 export default function MovieSearchView({
   onSetMovies,
@@ -22,6 +22,7 @@ export default function MovieSearchView({
   pageNumber,
   total,
 }) {
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
@@ -47,6 +48,7 @@ export default function MovieSearchView({
       .catch(error => setError(error.message))
       .finally(() => setLoading(false));
     // console.log(foundMovies);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber, query]);
 
   const onQueryChange = query => {

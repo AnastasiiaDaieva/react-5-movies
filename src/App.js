@@ -1,10 +1,11 @@
 import { Suspense, lazy, useState } from 'react';
 import { Routes, Route } from 'react-router';
-import s from './App.module.css';
+import s from './App.module.scss';
 import Loading from 'components/Loader/Loader';
 import { Header } from 'components/Header/Header';
 import Categories from 'components/Categories/Categories';
 import Container from 'components/Container/Container';
+import UpcomingMovies from 'components/Upcoming/UpcomingMovies';
 
 const HomeView = lazy(() =>
   import('views/HomeView.js' /* webpackChunkName: "home-view" */),
@@ -50,10 +51,10 @@ function App() {
   return (
     <>
       <Header />
-      <Container>
-        <main className={s.App__main}>
-          <Categories />
-          <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading />}>
+        <Container>
+          <main className={s.App__main}>
+            <Categories />
             <Routes>
               <Route path="/*" element={<HomeView />} />
               <Route
@@ -75,9 +76,10 @@ function App() {
               <Route path="/movies/:id/*" element={<MovieDetailsView />} />
               <Route path="genre/:genre" element={<GenreView />}></Route>
             </Routes>
-          </Suspense>
-        </main>
-      </Container>
+            <UpcomingMovies />
+          </main>
+        </Container>
+      </Suspense>
     </>
   );
 }

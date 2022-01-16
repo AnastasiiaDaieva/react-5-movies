@@ -6,12 +6,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Button from 'components/Button/Button';
 
-import s from 'components/Searchbar/Searchbar.module.css';
+import s from 'components/Searchbar/Searchbar.module.scss';
 
 import PropTypes from 'prop-types';
 
 export default function Searchbar({ onSubmit }) {
   const [query, setQuery] = useState('');
+  // eslint-disable-next-line no-unused-vars
   let [searchParams, setSearchParams] = useSearchParams();
   // console.log(searchParams.get('query'));
 

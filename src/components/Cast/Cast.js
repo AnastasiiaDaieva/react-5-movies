@@ -2,7 +2,7 @@ import defaultProfile from 'images/default-profile.jpg';
 
 import List from 'components/List/List';
 
-import s from 'components/Cast/Cast.module.css';
+import s from 'components/Cast/Cast.module.scss';
 
 import PropTypes from 'prop-types';
 

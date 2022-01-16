@@ -1,0 +1,13 @@
+@import '/src/index.scss';
+
+.GenreView {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  box-shadow: var(--shadow);
+}
+.GenreView__list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}

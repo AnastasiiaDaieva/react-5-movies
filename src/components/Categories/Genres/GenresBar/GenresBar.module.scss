@@ -1,0 +1,30 @@
+@import '/src/index.scss';
+
+.GenresBar__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+  width: 50vw;
+  justify-content: space-around;
+  padding: 15px;
+  background-color: rgba(43, 103, 119, 0.3);
+  box-shadow: var(--shadow);
+}
+.GenresBar__item {
+  font-size: 16px;
+  margin-right: 15px;
+  font-weight: 600;
+  background-color: var(--add-color);
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 3px 5px;
+  box-shadow: var(--shadow);
+}
+
+.GenresBar__item:hover {
+  background-color: var(--neutral-color);
+  border-color: white;
+  text-shadow: #306970 1px 0 1px;
+}

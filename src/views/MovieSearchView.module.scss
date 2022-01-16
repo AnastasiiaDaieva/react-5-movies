@@ -1,0 +1,17 @@
+@import '/src/index.scss';
+.Search__item {
+  composes: Home__item from 'views/HomeView.module.scss';
+}
+.Search__image {
+  composes: Home__image from 'views/HomeView.module.scss';
+  box-shadow: var(--movie-card-shadow);
+}
+.Search__description {
+  composes: Home__description from 'views/HomeView.module.scss';
+}
+.Search__title {
+  composes: Home__title from 'views/HomeView.module.scss';
+}
+.Search__overview {
+  composes: Home__overview from 'views/HomeView.module.scss';
+}
