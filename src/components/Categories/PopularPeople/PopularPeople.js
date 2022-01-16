@@ -9,7 +9,7 @@ function PopularPeople() {
 
   const [popularPeople, setPopularPeople] = useState([]);
 
-  console.log(popularPeople);
+  // console.log(popularPeople);
 
   useEffect(() => {
     setLoading(true);

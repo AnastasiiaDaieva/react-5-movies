@@ -10,6 +10,7 @@ function Genres() {
   const [loading, setLoading] = useState(false);
   const [genres, setGenres] = useState([]);
   const [seeMore, setSeeMore] = useState(false);
+  // console.log(genres);
 
   useEffect(() => {
     setLoading(true);
@@ -18,7 +19,7 @@ function Genres() {
       .then(response => {
         setGenres(response.data.genres);
         setSeeMore(true);
-        // console.log(genres);
+        console.log(genres);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -30,7 +31,7 @@ function Genres() {
           ? genres.slice(0, 4).map(({ name, id }) => (
               <li key={id} id={id} className={s.Genres__item}>
                 <NavLink
-                  to={`/genre/${name}`}
+                  to={`/genre/${id}`}
                   className={s.Genres__link}
                   style={activeStyle}
                 >
@@ -40,10 +41,7 @@ function Genres() {
             ))
           : genres.map(({ name, id }) => (
               <li key={id} id={id} className={s.Genres__item}>
-                <NavLink
-                  to={`/genre/${name.toLowerCase()}`}
-                  className={s.Genres__link}
-                >
+                <NavLink to={`/genre/${id}`} className={s.Genres__link}>
                   {name}
                 </NavLink>
               </li>
